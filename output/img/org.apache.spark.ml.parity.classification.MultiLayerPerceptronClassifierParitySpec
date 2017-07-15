@@ -1,0 +1,12 @@
+digraph {
+	"0_dataframe" [label="0_dataframe"]
+	"1_string_indexer" [label="1_string_indexer"]
+	"2_vector_assembler" [label="2_vector_assembler"]
+	"3_string_indexer" [label="3_string_indexer"]
+	"4_multi_layer_perceptron_classifier" [label="4_multi_layer_perceptron_classifier"]
+	"1_string_indexer" -> "2_vector_assembler" [label=fico_index]
+	"0_dataframe" -> "3_string_indexer" [label=approved]
+	"0_dataframe" -> "2_vector_assembler" [label=dti]
+	"0_dataframe" -> "1_string_indexer" [label=fico_score_group_fnl]
+	"2_vector_assembler" -> "4_multi_layer_perceptron_classifier" [label=features]
+}

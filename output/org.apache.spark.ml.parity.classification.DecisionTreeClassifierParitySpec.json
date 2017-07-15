@@ -1,0 +1,131 @@
+{
+    "format": "mixed",
+    "stages": [
+        {
+            "name": "strIdx_361e8719fce9",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "fico_score_group_fnl",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "fico_index",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "labels": {
+                    "type": {
+                        "type": "list",
+                        "base": "string"
+                    },
+                    "value": [
+                        "650 - 700",
+                        "600 - 650",
+                        "700 - 800",
+                        "550 - 600",
+                        "0 - 450",
+                        "500 - 550",
+                        "450 - 500"
+                    ]
+                }
+            },
+            "op": "string_indexer"
+        },
+        {
+            "name": "vecAssembler_70efcfa6ecc2",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "fico_index",
+                        "port": "input0"
+                    },
+                    {
+                        "name": "dti",
+                        "port": "input1"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "features",
+                        "port": "output"
+                    }
+                ]
+            },
+            "op": "vector_assembler"
+        },
+        {
+            "name": "strIdx_731a3487cd81",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "approved",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "label",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "labels": {
+                    "type": {
+                        "type": "list",
+                        "base": "string"
+                    },
+                    "value": [
+                        "0.0"
+                    ]
+                }
+            },
+            "op": "string_indexer"
+        },
+        {
+            "name": "dtc_7819d9d1bd64",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "features",
+                        "port": "features"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "prediction",
+                        "port": "prediction"
+                    },
+                    {
+                        "name": "rawPrediction",
+                        "port": "raw_prediction"
+                    },
+                    {
+                        "name": "probability",
+                        "port": "probability"
+                    }
+                ]
+            },
+            "attributes": {
+                "num_classes": {
+                    "type": "long",
+                    "value": 1
+                },
+                "num_features": {
+                    "type": "long",
+                    "value": 2
+                }
+            },
+            "op": "decision_tree_classifier"
+        }
+    ],
+    "version": "0.5.0-SNAPSHOT",
+    "uid": "431745ed-1151-4378-901f-2952e327d4a8",
+    "name": "pipeline_bd258f321d4c",
+    "op": "pipeline"
+}

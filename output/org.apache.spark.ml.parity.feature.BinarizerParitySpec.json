@@ -1,0 +1,51 @@
+{
+    "format": "mixed",
+    "stages": [
+        {
+            "name": "vecAssembler_229db76b90b9",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "dti",
+                        "port": "input0"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "features",
+                        "port": "output"
+                    }
+                ]
+            },
+            "op": "vector_assembler"
+        },
+        {
+            "name": "binarizer_93c5f0639d0c",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "features",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "thresholded_features",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "threshold": {
+                    "type": "double",
+                    "value": 0.12
+                }
+            },
+            "op": "binarizer"
+        }
+    ],
+    "version": "0.5.0-SNAPSHOT",
+    "uid": "2de52937-ef36-4911-b33c-eb8685afd724",
+    "name": "pipeline_562f3c68afb4",
+    "op": "pipeline"
+}

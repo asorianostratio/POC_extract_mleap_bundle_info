@@ -1,0 +1,105 @@
+{
+    "format": "mixed",
+    "stages": [
+        {
+            "name": "vecAssembler_cc329175d69f",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "dti",
+                        "port": "input0"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "features",
+                        "port": "output"
+                    }
+                ]
+            },
+            "op": "vector_assembler"
+        },
+        {
+            "name": "isoReg_90c73677a2c8",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "dti",
+                        "port": "features"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "prediction",
+                        "port": "prediction"
+                    }
+                ]
+            },
+            "attributes": {
+                "isotonic": {
+                    "type": "boolean",
+                    "value": true
+                },
+                "predictions": {
+                    "type": {
+                        "type": "list",
+                        "base": "double"
+                    },
+                    "value": [
+                        1000.0,
+                        2500.0,
+                        7000.0,
+                        10000.0,
+                        11072.85714285707,
+                        11072.85714285707,
+                        11856.5217391308,
+                        11856.5217391308,
+                        13700.0,
+                        13700.0,
+                        14499.999999999996,
+                        14499.999999999996,
+                        14707.364263565947,
+                        14707.364263565947,
+                        15673.737373737424,
+                        15673.737373737424,
+                        18333.333333333332,
+                        18333.333333333332,
+                        20000.0
+                    ]
+                },
+                "boundaries": {
+                    "type": {
+                        "type": "list",
+                        "base": "double"
+                    },
+                    "value": [
+                        -0.01,
+                        -0.01,
+                        -0.01,
+                        -0.01,
+                        -0.01,
+                        0.0,
+                        0.0,
+                        0.1042,
+                        0.105,
+                        0.1082,
+                        0.1082,
+                        0.114,
+                        0.1142,
+                        0.2837,
+                        0.2844,
+                        5.16,
+                        24.177,
+                        1999.98,
+                        1999.98
+                    ]
+                }
+            },
+            "op": "isotonic_regression"
+        }
+    ],
+    "version": "0.5.0-SNAPSHOT",
+    "uid": "8eda2787-5296-426f-ad30-9c419873b389",
+    "name": "pipeline_ee5043681056",
+    "op": "pipeline"
+}

@@ -1,0 +1,11 @@
+digraph {
+	"0_dataframe" [label="0_dataframe"]
+	"1_string_indexer" [label="1_string_indexer"]
+	"2_vector_assembler" [label="2_vector_assembler"]
+	"3_string_indexer" [label="3_string_indexer"]
+	"4_naive_bayes" [label="4_naive_bayes"]
+	"1_string_indexer" -> "2_vector_assembler" [label=fico_index]
+	"0_dataframe" -> "3_string_indexer" [label=approved]
+	"0_dataframe" -> "1_string_indexer" [label=fico_score_group_fnl]
+	"2_vector_assembler" -> "4_naive_bayes" [label=features]
+}

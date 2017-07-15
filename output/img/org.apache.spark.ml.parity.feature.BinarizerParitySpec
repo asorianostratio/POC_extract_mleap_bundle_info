@@ -1,0 +1,7 @@
+digraph {
+	"0_dataframe" [label="0_dataframe"]
+	"1_vector_assembler" [label="1_vector_assembler"]
+	"2_binarizer" [label="2_binarizer"]
+	"0_dataframe" -> "1_vector_assembler" [label=dti]
+	"1_vector_assembler" -> "2_binarizer" [label=features]
+}

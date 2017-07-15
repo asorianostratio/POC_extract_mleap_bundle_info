@@ -1,0 +1,187 @@
+{
+    "format": "mixed",
+    "stages": [
+        {
+            "name": "strIdx_7f76a8057bd9",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "fico_score_group_fnl",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "fico_index",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "labels": {
+                    "type": {
+                        "type": "list",
+                        "base": "string"
+                    },
+                    "value": [
+                        "650 - 700",
+                        "600 - 650",
+                        "700 - 800",
+                        "550 - 600",
+                        "0 - 450",
+                        "500 - 550",
+                        "450 - 500"
+                    ]
+                }
+            },
+            "op": "string_indexer"
+        },
+        {
+            "name": "vecAssembler_4ce944563749",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "fico_index",
+                        "port": "input0"
+                    },
+                    {
+                        "name": "dti",
+                        "port": "input1"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "features",
+                        "port": "output"
+                    }
+                ]
+            },
+            "op": "vector_assembler"
+        },
+        {
+            "name": "strIdx_9e006def7422",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "approved",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "label",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "labels": {
+                    "type": {
+                        "type": "list",
+                        "base": "string"
+                    },
+                    "value": [
+                        "0.0"
+                    ]
+                }
+            },
+            "op": "string_indexer"
+        },
+        {
+            "name": "rfc_af64565af78a",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "features",
+                        "port": "features"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "prediction",
+                        "port": "prediction"
+                    },
+                    {
+                        "name": "rawPrediction",
+                        "port": "raw_prediction"
+                    },
+                    {
+                        "name": "probability",
+                        "port": "probability"
+                    }
+                ]
+            },
+            "attributes": {
+                "num_classes": {
+                    "type": "long",
+                    "value": 1
+                },
+                "tree_weights": {
+                    "type": {
+                        "type": "list",
+                        "base": "double"
+                    },
+                    "value": [
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0
+                    ]
+                },
+                "trees": {
+                    "type": {
+                        "type": "list",
+                        "base": "string"
+                    },
+                    "value": [
+                        "tree0",
+                        "tree1",
+                        "tree2",
+                        "tree3",
+                        "tree4",
+                        "tree5",
+                        "tree6",
+                        "tree7",
+                        "tree8",
+                        "tree9",
+                        "tree10",
+                        "tree11",
+                        "tree12",
+                        "tree13",
+                        "tree14",
+                        "tree15",
+                        "tree16",
+                        "tree17",
+                        "tree18",
+                        "tree19"
+                    ]
+                },
+                "num_features": {
+                    "type": "long",
+                    "value": 2
+                }
+            },
+            "op": "random_forest_classifier"
+        }
+    ],
+    "version": "0.5.0-SNAPSHOT",
+    "uid": "ee25b5b2-944f-44b6-a77a-9d2b20d8451e",
+    "name": "pipeline_a763155c4399",
+    "op": "pipeline"
+}

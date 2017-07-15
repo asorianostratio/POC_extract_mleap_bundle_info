@@ -1,0 +1,72 @@
+{
+    "format": "mixed",
+    "stages": [
+        {
+            "name": "strIdx_050b83b79d43",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "fico_score_group_fnl",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "fico_index",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "labels": {
+                    "type": {
+                        "type": "list",
+                        "base": "string"
+                    },
+                    "value": [
+                        "650 - 700",
+                        "600 - 650",
+                        "700 - 800",
+                        "550 - 600",
+                        "0 - 450",
+                        "500 - 550",
+                        "450 - 500"
+                    ]
+                }
+            },
+            "op": "string_indexer"
+        },
+        {
+            "name": "math_bin",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "fico_index",
+                        "port": "input_a"
+                    },
+                    {
+                        "name": "dti",
+                        "port": "input_b"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "bin_out",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "operation": {
+                    "type": "string",
+                    "value": "mul"
+                }
+            },
+            "op": "math_binary"
+        }
+    ],
+    "version": "0.5.0-SNAPSHOT",
+    "uid": "fbfbe32b-2af8-414f-91f7-c80ce1493e4d",
+    "name": "pipeline_b47f18f637b3",
+    "op": "pipeline"
+}

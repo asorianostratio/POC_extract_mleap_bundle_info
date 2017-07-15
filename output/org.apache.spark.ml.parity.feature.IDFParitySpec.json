@@ -1,0 +1,68 @@
+{
+    "format": "mixed",
+    "stages": [
+        {
+            "name": "vecAssembler_1579faec70ac",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "dti",
+                        "port": "input0"
+                    },
+                    {
+                        "name": "loan_amount",
+                        "port": "input1"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "features",
+                        "port": "output"
+                    }
+                ]
+            },
+            "op": "vector_assembler"
+        },
+        {
+            "name": "idf_f0ad89398da8",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "features",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "idf_features",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "idf": {
+                    "type": {
+                        "type": "tensor",
+                        "tensor": {
+                            "base": "double"
+                        }
+                    },
+                    "value": {
+                        "values": [
+                            0.12251528812291917,
+                            0.0
+                        ],
+                        "dimensions": [
+                            2
+                        ]
+                    }
+                }
+            },
+            "op": "idf"
+        }
+    ],
+    "version": "0.5.0-SNAPSHOT",
+    "uid": "abfc3ccc-40e9-46d3-aac9-4d5704a18454",
+    "name": "pipeline_70a9fd202a1b",
+    "op": "pipeline"
+}

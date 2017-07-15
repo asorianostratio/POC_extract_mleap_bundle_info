@@ -1,0 +1,69 @@
+{
+    "format": "mixed",
+    "stages": [
+        {
+            "name": "vecAssembler_a90a82dfd741",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "dti",
+                        "port": "input0"
+                    },
+                    {
+                        "name": "loan_amount",
+                        "port": "input1"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "features",
+                        "port": "output"
+                    }
+                ]
+            },
+            "op": "vector_assembler"
+        },
+        {
+            "name": "mh-lsh_e9dbe7658f64",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "features",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "lsh_features",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "random_coefficients_a": {
+                    "type": {
+                        "type": "list",
+                        "base": "long"
+                    },
+                    "value": [
+                        752863889
+                    ]
+                },
+                "random_coefficients_b": {
+                    "type": {
+                        "type": "list",
+                        "base": "long"
+                    },
+                    "value": [
+                        5076042
+                    ]
+                }
+            },
+            "op": "min_hash_lsh"
+        }
+    ],
+    "version": "0.5.0-SNAPSHOT",
+    "uid": "91e4a1f1-109a-48fb-8fb0-e4ca83ce65fa",
+    "name": "pipeline_6af5e95178f2",
+    "op": "pipeline"
+}

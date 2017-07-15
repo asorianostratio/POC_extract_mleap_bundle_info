@@ -1,0 +1,60 @@
+{
+    "format": "mixed",
+    "stages": [
+        {
+            "name": "tok_34845e7f9e7e",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "loan_title",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "loan_title_tokens",
+                        "port": "output"
+                    }
+                ]
+            },
+            "op": "tokenizer"
+        },
+        {
+            "name": "stopWords_0125aba46fcf",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "loan_title_tokens",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "loan_title_stop",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "case_sensitive": {
+                    "type": "boolean",
+                    "value": false
+                },
+                "stop_words": {
+                    "type": {
+                        "type": "list",
+                        "base": "string"
+                    },
+                    "value": [
+                        "loan"
+                    ]
+                }
+            },
+            "op": "stopwords_remover"
+        }
+    ],
+    "version": "0.5.0-SNAPSHOT",
+    "uid": "a40b7a6a-f74a-4297-9368-a498d5650fe2",
+    "name": "pipeline_49af55433500",
+    "op": "pipeline"
+}

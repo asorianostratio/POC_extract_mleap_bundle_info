@@ -1,0 +1,549 @@
+{
+    "format": "mixed",
+    "stages": [
+        {
+            "stages": [
+                {
+                    "name": "continuous_feature_assembler",
+                    "shape": {
+                        "inputs": [
+                            {
+                                "name": "bathrooms",
+                                "port": "input0"
+                            },
+                            {
+                                "name": "bedrooms",
+                                "port": "input1"
+                            },
+                            {
+                                "name": "security_deposit",
+                                "port": "input2"
+                            },
+                            {
+                                "name": "cleaning_fee",
+                                "port": "input3"
+                            },
+                            {
+                                "name": "extra_people",
+                                "port": "input4"
+                            },
+                            {
+                                "name": "number_of_reviews",
+                                "port": "input5"
+                            },
+                            {
+                                "name": "square_feet",
+                                "port": "input6"
+                            },
+                            {
+                                "name": "review_scores_rating",
+                                "port": "input7"
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "name": "unscaled_continuous_features",
+                                "port": "output"
+                            }
+                        ]
+                    },
+                    "op": "vector_assembler"
+                },
+                {
+                    "name": "continuous_feature_scaler",
+                    "shape": {
+                        "inputs": [
+                            {
+                                "name": "unscaled_continuous_features",
+                                "port": "input"
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "name": "scaled_continuous_features",
+                                "port": "output"
+                            }
+                        ]
+                    },
+                    "attributes": {
+                        "std": {
+                            "type": {
+                                "type": "tensor",
+                                "tensor": {
+                                    "base": "double"
+                                }
+                            },
+                            "value": {
+                                "values": [
+                                    0.48305900512626726,
+                                    0.8466586601060757,
+                                    244.51668053483962,
+                                    42.64237791484616,
+                                    18.684562043006,
+                                    27.985814829081583,
+                                    363.39839582374066,
+                                    8.577185802374286
+                                ],
+                                "dimensions": [
+                                    8
+                                ]
+                            }
+                        }
+                    },
+                    "op": "standard_scaler"
+                },
+                {
+                    "name": "string_indexer_room_type",
+                    "shape": {
+                        "inputs": [
+                            {
+                                "name": "room_type",
+                                "port": "input"
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "name": "room_type_index",
+                                "port": "output"
+                            }
+                        ]
+                    },
+                    "attributes": {
+                        "labels": {
+                            "type": {
+                                "type": "list",
+                                "base": "string"
+                            },
+                            "value": [
+                                "Entire home/apt",
+                                "Private room",
+                                "Shared room"
+                            ]
+                        }
+                    },
+                    "op": "string_indexer"
+                },
+                {
+                    "name": "string_indexer_host_is_superhost",
+                    "shape": {
+                        "inputs": [
+                            {
+                                "name": "host_is_superhost",
+                                "port": "input"
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "name": "host_is_superhost_index",
+                                "port": "output"
+                            }
+                        ]
+                    },
+                    "attributes": {
+                        "labels": {
+                            "type": {
+                                "type": "list",
+                                "base": "string"
+                            },
+                            "value": [
+                                "0.0",
+                                "1.0"
+                            ]
+                        }
+                    },
+                    "op": "string_indexer"
+                },
+                {
+                    "name": "string_indexer_cancellation_policy",
+                    "shape": {
+                        "inputs": [
+                            {
+                                "name": "cancellation_policy",
+                                "port": "input"
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "name": "cancellation_policy_index",
+                                "port": "output"
+                            }
+                        ]
+                    },
+                    "attributes": {
+                        "labels": {
+                            "type": {
+                                "type": "list",
+                                "base": "string"
+                            },
+                            "value": [
+                                "strict",
+                                "moderate",
+                                "flexible",
+                                "super_strict_30",
+                                "super_strict_60",
+                                "no_refunds",
+                                "long_term"
+                            ]
+                        }
+                    },
+                    "op": "string_indexer"
+                },
+                {
+                    "name": "string_indexer_instant_bookable",
+                    "shape": {
+                        "inputs": [
+                            {
+                                "name": "instant_bookable",
+                                "port": "input"
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "name": "instant_bookable_index",
+                                "port": "output"
+                            }
+                        ]
+                    },
+                    "attributes": {
+                        "labels": {
+                            "type": {
+                                "type": "list",
+                                "base": "string"
+                            },
+                            "value": [
+                                "0.0",
+                                "1.0"
+                            ]
+                        }
+                    },
+                    "op": "string_indexer"
+                },
+                {
+                    "name": "string_indexer_state",
+                    "shape": {
+                        "inputs": [
+                            {
+                                "name": "state",
+                                "port": "input"
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "name": "state_index",
+                                "port": "output"
+                            }
+                        ]
+                    },
+                    "attributes": {
+                        "labels": {
+                            "type": {
+                                "type": "list",
+                                "base": "string"
+                            },
+                            "value": [
+                                "Other",
+                                "NY",
+                                "CA",
+                                "London",
+                                "Berlin",
+                                "IL",
+                                "TX",
+                                "WA",
+                                "DC",
+                                "OR"
+                            ]
+                        }
+                    },
+                    "op": "string_indexer"
+                },
+                {
+                    "name": "oh_encoder_room_type_index",
+                    "shape": {
+                        "inputs": [
+                            {
+                                "name": "room_type_index",
+                                "port": "input"
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "name": "room_type_index_oh",
+                                "port": "output"
+                            }
+                        ]
+                    },
+                    "attributes": {
+                        "size": {
+                            "type": "long",
+                            "value": 2
+                        },
+                        "drop_last": {
+                            "type": "boolean",
+                            "value": true
+                        }
+                    },
+                    "op": "one_hot_encoder"
+                },
+                {
+                    "name": "oh_encoder_host_is_superhost_index",
+                    "shape": {
+                        "inputs": [
+                            {
+                                "name": "host_is_superhost_index",
+                                "port": "input"
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "name": "host_is_superhost_index_oh",
+                                "port": "output"
+                            }
+                        ]
+                    },
+                    "attributes": {
+                        "size": {
+                            "type": "long",
+                            "value": 1
+                        },
+                        "drop_last": {
+                            "type": "boolean",
+                            "value": true
+                        }
+                    },
+                    "op": "one_hot_encoder"
+                },
+                {
+                    "name": "oh_encoder_cancellation_policy_index",
+                    "shape": {
+                        "inputs": [
+                            {
+                                "name": "cancellation_policy_index",
+                                "port": "input"
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "name": "cancellation_policy_index_oh",
+                                "port": "output"
+                            }
+                        ]
+                    },
+                    "attributes": {
+                        "size": {
+                            "type": "long",
+                            "value": 6
+                        },
+                        "drop_last": {
+                            "type": "boolean",
+                            "value": true
+                        }
+                    },
+                    "op": "one_hot_encoder"
+                },
+                {
+                    "name": "oh_encoder_instant_bookable_index",
+                    "shape": {
+                        "inputs": [
+                            {
+                                "name": "instant_bookable_index",
+                                "port": "input"
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "name": "instant_bookable_index_oh",
+                                "port": "output"
+                            }
+                        ]
+                    },
+                    "attributes": {
+                        "size": {
+                            "type": "long",
+                            "value": 1
+                        },
+                        "drop_last": {
+                            "type": "boolean",
+                            "value": true
+                        }
+                    },
+                    "op": "one_hot_encoder"
+                },
+                {
+                    "name": "oh_encoder_state_index",
+                    "shape": {
+                        "inputs": [
+                            {
+                                "name": "state_index",
+                                "port": "input"
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "name": "state_index_oh",
+                                "port": "output"
+                            }
+                        ]
+                    },
+                    "attributes": {
+                        "size": {
+                            "type": "long",
+                            "value": 9
+                        },
+                        "drop_last": {
+                            "type": "boolean",
+                            "value": true
+                        }
+                    },
+                    "op": "one_hot_encoder"
+                },
+                {
+                    "name": "feature_assembler_lr",
+                    "shape": {
+                        "inputs": [
+                            {
+                                "name": "room_type_index_oh",
+                                "port": "input0"
+                            },
+                            {
+                                "name": "host_is_superhost_index_oh",
+                                "port": "input1"
+                            },
+                            {
+                                "name": "cancellation_policy_index_oh",
+                                "port": "input2"
+                            },
+                            {
+                                "name": "instant_bookable_index_oh",
+                                "port": "input3"
+                            },
+                            {
+                                "name": "state_index_oh",
+                                "port": "input4"
+                            },
+                            {
+                                "name": "scaled_continuous_features",
+                                "port": "input5"
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "name": "features_lr",
+                                "port": "output"
+                            }
+                        ]
+                    },
+                    "op": "vector_assembler"
+                },
+                {
+                    "name": "feature_assembler_rf",
+                    "shape": {
+                        "inputs": [
+                            {
+                                "name": "room_type_index",
+                                "port": "input0"
+                            },
+                            {
+                                "name": "host_is_superhost_index",
+                                "port": "input1"
+                            },
+                            {
+                                "name": "cancellation_policy_index",
+                                "port": "input2"
+                            },
+                            {
+                                "name": "instant_bookable_index",
+                                "port": "input3"
+                            },
+                            {
+                                "name": "state_index",
+                                "port": "input4"
+                            },
+                            {
+                                "name": "scaled_continuous_features",
+                                "port": "input5"
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "name": "features_rf",
+                                "port": "output"
+                            }
+                        ]
+                    },
+                    "op": "vector_assembler"
+                }
+            ],
+            "op": "pipeline"
+        },
+        {
+            "name": "linear_regression",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "features_lr",
+                        "port": "features"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "price_prediction",
+                        "port": "prediction"
+                    }
+                ]
+            },
+            "attributes": {
+                "coefficients": {
+                    "type": {
+                        "type": "tensor",
+                        "tensor": {
+                            "base": "double"
+                        }
+                    },
+                    "value": {
+                        "values": [
+                            54.015061434611425,
+                            14.909261855288538,
+                            -5.7930446711647985,
+                            7.405704022434717,
+                            1.0192677685138751,
+                            6.4295065271140395,
+                            91.70425308328103,
+                            177.0266494649818,
+                            19.470594136587007,
+                            6.583125106962521,
+                            6.613957067629589,
+                            40.57877036936628,
+                            32.26564656264461,
+                            6.987564921444708,
+                            -32.6162703500803,
+                            37.131691610157475,
+                            54.016448609817104,
+                            9.787676385636223,
+                            26.327893378130117,
+                            17.31960079597338,
+                            21.174127706894954,
+                            6.278081552277792,
+                            22.367163894002594,
+                            2.652828262855564,
+                            -2.809076785925084,
+                            3.931636875884562,
+                            4.970340301343736
+                        ],
+                        "dimensions": [
+                            27
+                        ]
+                    }
+                },
+                "intercept": {
+                    "type": "double",
+                    "value": -93.4700528667358
+                }
+            },
+            "op": "linear_regression"
+        }
+    ],
+    "version": "0.6.0-SNAPSHOT",
+    "uid": "51cff79d-1c3d-4723-86bc-fcc2669a0f53",
+    "name": "pipeline_caaade362186",
+    "op": "pipeline"
+}

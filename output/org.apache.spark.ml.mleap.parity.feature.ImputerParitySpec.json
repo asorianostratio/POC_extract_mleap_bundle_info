@@ -1,0 +1,41 @@
+{
+    "format": "mixed",
+    "stages": [
+        {
+            "name": "imputer",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "mv",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "mv_imputed",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "missing_value": {
+                    "type": "double",
+                    "value": 23.4
+                },
+                "strategy": {
+                    "type": "string",
+                    "value": "mean"
+                },
+                "surrogate_value": {
+                    "type": "double",
+                    "value": 20.606458930135958
+                }
+            },
+            "op": "imputer"
+        }
+    ],
+    "version": "0.5.0-SNAPSHOT",
+    "uid": "dd7597cd-f7c5-41a0-9e0c-6a79030c0f02",
+    "name": "imputer",
+    "op": "pipeline"
+}

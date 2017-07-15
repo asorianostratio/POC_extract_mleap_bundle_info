@@ -1,0 +1,5 @@
+digraph {
+	"0_dataframe" [label="0_dataframe"]
+	"1_bucketizer" [label="1_bucketizer"]
+	"0_dataframe" -> "1_bucketizer" [label=loan_amount]
+}

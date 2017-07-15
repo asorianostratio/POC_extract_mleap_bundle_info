@@ -1,0 +1,12 @@
+digraph {
+	"0_dataframe" [label="0_dataframe"]
+	"1_string_indexer" [label="1_string_indexer"]
+	"2_one_hot_encoder" [label="2_one_hot_encoder"]
+	"3_vector_assembler" [label="3_vector_assembler"]
+	"4_aft_survival_regression" [label="4_aft_survival_regression"]
+	"2_one_hot_encoder" -> "3_vector_assembler" [label=fico]
+	"1_string_indexer" -> "2_one_hot_encoder" [label=fico_index]
+	"0_dataframe" -> "3_vector_assembler" [label=dti]
+	"0_dataframe" -> "1_string_indexer" [label=fico_score_group_fnl]
+	"3_vector_assembler" -> "4_aft_survival_regression" [label=features]
+}

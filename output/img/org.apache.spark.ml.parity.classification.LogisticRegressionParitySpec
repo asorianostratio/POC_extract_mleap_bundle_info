@@ -1,0 +1,10 @@
+digraph {
+	"0_dataframe" [label="0_dataframe"]
+	"1_string_indexer" [label="1_string_indexer"]
+	"2_vector_assembler" [label="2_vector_assembler"]
+	"3_logistic_regression" [label="3_logistic_regression"]
+	"1_string_indexer" -> "2_vector_assembler" [label=fico_index]
+	"0_dataframe" -> "2_vector_assembler" [label=dti]
+	"0_dataframe" -> "1_string_indexer" [label=fico_score_group_fnl]
+	"2_vector_assembler" -> "3_logistic_regression" [label=features]
+}

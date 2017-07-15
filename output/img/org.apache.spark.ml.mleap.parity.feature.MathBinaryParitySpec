@@ -1,0 +1,8 @@
+digraph {
+	"0_dataframe" [label="0_dataframe"]
+	"1_string_indexer" [label="1_string_indexer"]
+	"2_math_binary" [label="2_math_binary"]
+	"0_dataframe" -> "2_math_binary" [label=dti]
+	"0_dataframe" -> "1_string_indexer" [label=fico_score_group_fnl]
+	"1_string_indexer" -> "2_math_binary" [label=fico_index]
+}

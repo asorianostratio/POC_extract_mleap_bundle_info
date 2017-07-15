@@ -1,0 +1,164 @@
+{
+    "format": "mixed",
+    "stages": [
+        {
+            "name": "strIdx_4118908fa3d8",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "fico_score_group_fnl",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "fico_index",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "labels": {
+                    "type": {
+                        "type": "list",
+                        "base": "string"
+                    },
+                    "value": [
+                        "650 - 700",
+                        "600 - 650",
+                        "700 - 800",
+                        "550 - 600",
+                        "0 - 450",
+                        "500 - 550",
+                        "450 - 500"
+                    ]
+                }
+            },
+            "op": "string_indexer"
+        },
+        {
+            "name": "vecAssembler_e6d65d528faf",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "fico_index",
+                        "port": "input0"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "features",
+                        "port": "output"
+                    }
+                ]
+            },
+            "op": "vector_assembler"
+        },
+        {
+            "name": "strIdx_da4b985a9661",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "approved",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "label",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "labels": {
+                    "type": {
+                        "type": "list",
+                        "base": "string"
+                    },
+                    "value": [
+                        "0.0"
+                    ]
+                }
+            },
+            "op": "string_indexer"
+        },
+        {
+            "name": "nb",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "features",
+                        "port": "features"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "prediction",
+                        "port": "prediction"
+                    },
+                    {
+                        "name": "rawPrediction",
+                        "port": "raw_prediction"
+                    },
+                    {
+                        "name": "probability",
+                        "port": "probability"
+                    }
+                ]
+            },
+            "attributes": {
+                "num_classes": {
+                    "type": "long",
+                    "value": 1
+                },
+                "model_type": {
+                    "type": "string",
+                    "value": "multinomial"
+                },
+                "theta": {
+                    "type": {
+                        "type": "tensor",
+                        "tensor": {
+                            "base": "double"
+                        }
+                    },
+                    "value": {
+                        "values": [
+                            0.0
+                        ],
+                        "dimensions": [
+                            1,
+                            1
+                        ]
+                    }
+                },
+                "pi": {
+                    "type": {
+                        "type": "tensor",
+                        "tensor": {
+                            "base": "double"
+                        }
+                    },
+                    "value": {
+                        "values": [
+                            0.0
+                        ],
+                        "dimensions": [
+                            1
+                        ]
+                    }
+                },
+                "num_features": {
+                    "type": "long",
+                    "value": 1
+                }
+            },
+            "op": "naive_bayes"
+        }
+    ],
+    "version": "0.5.0-SNAPSHOT",
+    "uid": "f517ca69-c9bf-4f27-9e16-12f66273d526",
+    "name": "pipeline_01ae0fdef231",
+    "op": "pipeline"
+}

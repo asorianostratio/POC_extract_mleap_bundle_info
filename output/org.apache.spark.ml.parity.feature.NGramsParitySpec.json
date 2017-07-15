@@ -1,0 +1,51 @@
+{
+    "format": "mixed",
+    "stages": [
+        {
+            "name": "tok_6e9189743cce",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "loan_title",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "loan_title_tokens",
+                        "port": "output"
+                    }
+                ]
+            },
+            "op": "tokenizer"
+        },
+        {
+            "name": "ngram_b4300420f7fd",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "loan_title_tokens",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "loan_title_ngram",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "n": {
+                    "type": "long",
+                    "value": 2
+                }
+            },
+            "op": "ngram"
+        }
+    ],
+    "version": "0.5.0-SNAPSHOT",
+    "uid": "77f54fa7-6d67-4389-9041-960e2a2a03a9",
+    "name": "pipeline_87e6e00826d5",
+    "op": "pipeline"
+}

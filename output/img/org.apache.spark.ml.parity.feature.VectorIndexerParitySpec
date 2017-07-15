@@ -1,0 +1,11 @@
+digraph {
+	"0_dataframe" [label="0_dataframe"]
+	"1_string_indexer" [label="1_string_indexer"]
+	"2_vector_assembler" [label="2_vector_assembler"]
+	"3_vector_indexer" [label="3_vector_indexer"]
+	"1_string_indexer" -> "2_vector_assembler" [label=state_index]
+	"0_dataframe" -> "1_string_indexer" [label=state]
+	"0_dataframe" -> "2_vector_assembler" [label=dti]
+	"0_dataframe" -> "2_vector_assembler" [label=loan_amount]
+	"2_vector_assembler" -> "3_vector_indexer" [label=features]
+}

@@ -1,0 +1,55 @@
+{
+    "format": "mixed",
+    "stages": [
+        {
+            "name": "vecAssembler_8b440ad7d5f5",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "dti",
+                        "port": "input0"
+                    },
+                    {
+                        "name": "loan_amount",
+                        "port": "input1"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "features",
+                        "port": "output"
+                    }
+                ]
+            },
+            "op": "vector_assembler"
+        },
+        {
+            "name": "poly_7f1904cc9aa6",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "features",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "poly",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "degree": {
+                    "type": "long",
+                    "value": 2
+                }
+            },
+            "op": "polynomial_expansion"
+        }
+    ],
+    "version": "0.5.0-SNAPSHOT",
+    "uid": "06fbe713-765c-4f05-a06f-aaadb2683839",
+    "name": "pipeline_117b094b2ce5",
+    "op": "pipeline"
+}

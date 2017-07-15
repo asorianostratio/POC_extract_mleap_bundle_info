@@ -1,0 +1,8 @@
+digraph {
+	"0_dataframe" [label="0_dataframe"]
+	"1_vector_assembler" [label="1_vector_assembler"]
+	"2_pca" [label="2_pca"]
+	"0_dataframe" -> "1_vector_assembler" [label=dti]
+	"0_dataframe" -> "1_vector_assembler" [label=loan_amount]
+	"1_vector_assembler" -> "2_pca" [label=features]
+}

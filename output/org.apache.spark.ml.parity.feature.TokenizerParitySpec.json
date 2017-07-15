@@ -1,0 +1,27 @@
+{
+    "format": "mixed",
+    "stages": [
+        {
+            "name": "tok_8ec86ad831ab",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "loan_title",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "loan_title_tokens",
+                        "port": "output"
+                    }
+                ]
+            },
+            "op": "tokenizer"
+        }
+    ],
+    "version": "0.5.0-SNAPSHOT",
+    "uid": "e6f45f17-6b7a-4433-b1c6-61996ee48ab1",
+    "name": "tok_8ec86ad831ab",
+    "op": "pipeline"
+}

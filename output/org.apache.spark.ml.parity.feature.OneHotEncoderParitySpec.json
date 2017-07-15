@@ -1,0 +1,116 @@
+{
+    "format": "mixed",
+    "stages": [
+        {
+            "name": "strIdx_dece24014e2b",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "state",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "state_index",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "labels": {
+                    "type": {
+                        "type": "list",
+                        "base": "string"
+                    },
+                    "value": [
+                        "CA",
+                        "TX",
+                        "FL",
+                        "NY",
+                        "PA",
+                        "IL",
+                        "GA",
+                        "NJ",
+                        "OH",
+                        "MI",
+                        "VA",
+                        "MD",
+                        "NC",
+                        "MA",
+                        "AZ",
+                        "MO",
+                        "CO",
+                        "AL",
+                        "CT",
+                        "WA",
+                        "SC",
+                        "WI",
+                        "KY",
+                        "LA",
+                        "AR",
+                        "MN",
+                        "OR",
+                        "OK",
+                        "NV",
+                        "KS",
+                        "HI",
+                        "UT",
+                        "NH",
+                        "NM",
+                        "WV",
+                        "RI",
+                        "DE",
+                        "VT",
+                        "DC",
+                        "MT",
+                        "IN",
+                        "AK",
+                        "SD",
+                        "WY",
+                        "MS",
+                        "IA",
+                        "TN",
+                        "NE",
+                        "ID",
+                        "ME",
+                        "ND"
+                    ]
+                }
+            },
+            "op": "string_indexer"
+        },
+        {
+            "name": "oneHot_a6b98bcd44a1",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "state_index",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "state_oh",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "size": {
+                    "type": "long",
+                    "value": 50
+                },
+                "drop_last": {
+                    "type": "boolean",
+                    "value": true
+                }
+            },
+            "op": "one_hot_encoder"
+        }
+    ],
+    "version": "0.5.0-SNAPSHOT",
+    "uid": "d2a583b9-faef-43d7-8009-3b4722118188",
+    "name": "pipeline_75d75c84a9ad",
+    "op": "pipeline"
+}

@@ -1,0 +1,88 @@
+{
+    "format": "mixed",
+    "stages": [
+        {
+            "name": "strIdx_eff7a239c977",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "state",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "state_index",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "labels": {
+                    "type": {
+                        "type": "list",
+                        "base": "string"
+                    },
+                    "value": [
+                        "CA",
+                        "TX",
+                        "FL",
+                        "NY",
+                        "PA",
+                        "IL",
+                        "GA",
+                        "NJ",
+                        "OH",
+                        "MI",
+                        "VA",
+                        "MD",
+                        "NC",
+                        "MA",
+                        "AZ",
+                        "MO",
+                        "CO",
+                        "AL",
+                        "CT",
+                        "WA",
+                        "SC",
+                        "WI",
+                        "KY",
+                        "LA",
+                        "AR",
+                        "MN",
+                        "OR",
+                        "OK",
+                        "NV",
+                        "KS",
+                        "HI",
+                        "UT",
+                        "NH",
+                        "NM",
+                        "WV",
+                        "RI",
+                        "DE",
+                        "VT",
+                        "DC",
+                        "MT",
+                        "IN",
+                        "AK",
+                        "SD",
+                        "WY",
+                        "MS",
+                        "IA",
+                        "TN",
+                        "NE",
+                        "ID",
+                        "ME",
+                        "ND"
+                    ]
+                }
+            },
+            "op": "string_indexer"
+        }
+    ],
+    "version": "0.5.0-SNAPSHOT",
+    "uid": "8ec3e567-41e3-440a-97b6-294885eb81dc",
+    "name": "strIdx_eff7a239c977",
+    "op": "pipeline"
+}

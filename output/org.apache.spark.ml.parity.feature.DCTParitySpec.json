@@ -1,0 +1,55 @@
+{
+    "format": "mixed",
+    "stages": [
+        {
+            "name": "vecAssembler_2fbdaaac1135",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "dti",
+                        "port": "input0"
+                    },
+                    {
+                        "name": "loan_amount",
+                        "port": "input1"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "features",
+                        "port": "output"
+                    }
+                ]
+            },
+            "op": "vector_assembler"
+        },
+        {
+            "name": "dct",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "features",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "filter_features",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "inverse": {
+                    "type": "boolean",
+                    "value": false
+                }
+            },
+            "op": "dct"
+        }
+    ],
+    "version": "0.5.0-SNAPSHOT",
+    "uid": "830a9eac-a7f4-4226-b77f-ae2eae8aa315",
+    "name": "pipeline_0c6949b43ba5",
+    "op": "pipeline"
+}

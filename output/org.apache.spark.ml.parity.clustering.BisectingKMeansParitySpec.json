@@ -1,0 +1,84 @@
+{
+    "format": "mixed",
+    "stages": [
+        {
+            "name": "strIdx_6a00496399ce",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "fico_score_group_fnl",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "fico_index",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "labels": {
+                    "type": {
+                        "type": "list",
+                        "base": "string"
+                    },
+                    "value": [
+                        "650 - 700",
+                        "600 - 650",
+                        "700 - 800",
+                        "550 - 600",
+                        "0 - 450",
+                        "500 - 550",
+                        "450 - 500"
+                    ]
+                }
+            },
+            "op": "string_indexer"
+        },
+        {
+            "name": "vecAssembler_48f63c54fc3c",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "fico_index",
+                        "port": "input0"
+                    },
+                    {
+                        "name": "dti",
+                        "port": "input1"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "features",
+                        "port": "output"
+                    }
+                ]
+            },
+            "op": "vector_assembler"
+        },
+        {
+            "name": "bisecting-kmeans_caa0e4a2d20d",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "features",
+                        "port": "features"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "prediction",
+                        "port": "prediction"
+                    }
+                ]
+            },
+            "op": "bisecting_k_means"
+        }
+    ],
+    "version": "0.5.0-SNAPSHOT",
+    "uid": "701d1205-3987-413e-999e-847205667f34",
+    "name": "pipeline_326b8fc40f0a",
+    "op": "pipeline"
+}

@@ -1,0 +1,68 @@
+{
+    "format": "mixed",
+    "stages": [
+        {
+            "name": "strIdx_9dd98be4b36d",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "fico_score_group_fnl",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "fico_index",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "labels": {
+                    "type": {
+                        "type": "list",
+                        "base": "string"
+                    },
+                    "value": [
+                        "650 - 700",
+                        "600 - 650",
+                        "700 - 800",
+                        "550 - 600",
+                        "0 - 450",
+                        "500 - 550",
+                        "450 - 500"
+                    ]
+                }
+            },
+            "op": "string_indexer"
+        },
+        {
+            "name": "math_bin",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "dti",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "dti_tan",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "operation": {
+                    "type": "string",
+                    "value": "tan"
+                }
+            },
+            "op": "math_unary"
+        }
+    ],
+    "version": "0.5.0-SNAPSHOT",
+    "uid": "b3eac0ff-fe19-49de-a368-de5d30350069",
+    "name": "pipeline_f09a56224904",
+    "op": "pipeline"
+}

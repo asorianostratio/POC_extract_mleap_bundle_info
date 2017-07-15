@@ -1,0 +1,90 @@
+{
+    "format": "mixed",
+    "stages": [
+        {
+            "name": "tok_0e0defeef488",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "loan_title",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "loan_title_tokens",
+                        "port": "output"
+                    }
+                ]
+            },
+            "op": "tokenizer"
+        },
+        {
+            "name": "cntVec_bef509e6a60e",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "loan_title_tokens",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "loan_title_token_counts",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "min_tf": {
+                    "type": "double",
+                    "value": 1.0
+                },
+                "vocabulary": {
+                    "type": {
+                        "type": "list",
+                        "base": "string"
+                    },
+                    "value": [
+                        "consolidation",
+                        "debt",
+                        "other",
+                        "payoff",
+                        "credit",
+                        "card",
+                        "home/home",
+                        "improvement",
+                        "loan",
+                        "car",
+                        "payment/loan",
+                        "business",
+                        "health/medical",
+                        "moving",
+                        "wedding/engagement",
+                        "vacation",
+                        "college",
+                        "renewable",
+                        "energy",
+                        "personal",
+                        "bills",
+                        "motorcycle",
+                        "rent",
+                        "payment",
+                        "electronics",
+                        "boat",
+                        "pool"
+                    ]
+                },
+                "binary": {
+                    "type": "boolean",
+                    "value": false
+                }
+            },
+            "op": "count_vectorizer"
+        }
+    ],
+    "version": "0.5.0-SNAPSHOT",
+    "uid": "962a794b-288c-4365-9498-c477c730b1ef",
+    "name": "pipeline_8c9aeb5671b1",
+    "op": "pipeline"
+}

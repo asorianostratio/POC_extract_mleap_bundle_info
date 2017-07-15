@@ -1,0 +1,55 @@
+{
+    "format": "mixed",
+    "stages": [
+        {
+            "name": "vecAssembler_74bf662e5e93",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "dti",
+                        "port": "input0"
+                    },
+                    {
+                        "name": "loan_amount",
+                        "port": "input1"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "features",
+                        "port": "output"
+                    }
+                ]
+            },
+            "op": "vector_assembler"
+        },
+        {
+            "name": "normalizer_89c1c22aea41",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "features",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "scaled_features",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "p_norm": {
+                    "type": "double",
+                    "value": 2.0
+                }
+            },
+            "op": "normalizer"
+        }
+    ],
+    "version": "0.5.0-SNAPSHOT",
+    "uid": "a4438f75-b19f-43a0-abb7-06f0ceb69206",
+    "name": "pipeline_445853f9faa8",
+    "op": "pipeline"
+}

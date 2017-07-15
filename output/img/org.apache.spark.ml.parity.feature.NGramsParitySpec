@@ -1,0 +1,7 @@
+digraph {
+	"0_dataframe" [label="0_dataframe"]
+	"1_tokenizer" [label="1_tokenizer"]
+	"2_ngram" [label="2_ngram"]
+	"1_tokenizer" -> "2_ngram" [label=loan_title_tokens]
+	"0_dataframe" -> "1_tokenizer" [label=loan_title]
+}

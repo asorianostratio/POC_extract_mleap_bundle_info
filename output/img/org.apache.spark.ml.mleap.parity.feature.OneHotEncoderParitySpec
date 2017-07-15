@@ -1,0 +1,7 @@
+digraph {
+	"0_dataframe" [label="0_dataframe"]
+	"1_string_indexer" [label="1_string_indexer"]
+	"2_one_hot_encoder" [label="2_one_hot_encoder"]
+	"1_string_indexer" -> "2_one_hot_encoder" [label=state_index]
+	"0_dataframe" -> "1_string_indexer" [label=state]
+}

@@ -1,0 +1,41 @@
+{
+    "format": "mixed",
+    "stages": [
+        {
+            "name": "bucketizer_a7a37ba17105",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "loan_amount",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "loan_amount_bucket",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "splits": {
+                    "type": {
+                        "type": "list",
+                        "base": "double"
+                    },
+                    "value": [
+                        0.0,
+                        1000.0,
+                        10000.0,
+                        9999999.0
+                    ]
+                }
+            },
+            "op": "bucketizer"
+        }
+    ],
+    "version": "0.5.0-SNAPSHOT",
+    "uid": "5b5cff55-c709-4422-9e67-d0e14bf0a4d5",
+    "name": "bucketizer_a7a37ba17105",
+    "op": "pipeline"
+}

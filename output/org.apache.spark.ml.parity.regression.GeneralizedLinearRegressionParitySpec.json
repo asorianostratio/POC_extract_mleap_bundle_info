@@ -1,0 +1,148 @@
+{
+    "format": "mixed",
+    "stages": [
+        {
+            "name": "strIdx_0b7f929eefa0",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "fico_score_group_fnl",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "fico_index",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "labels": {
+                    "type": {
+                        "type": "list",
+                        "base": "string"
+                    },
+                    "value": [
+                        "650 - 700",
+                        "600 - 650",
+                        "700 - 800",
+                        "550 - 600",
+                        "0 - 450",
+                        "500 - 550",
+                        "450 - 500"
+                    ]
+                }
+            },
+            "op": "string_indexer"
+        },
+        {
+            "name": "oneHot_1709a879ffdd",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "fico_index",
+                        "port": "input"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "fico",
+                        "port": "output"
+                    }
+                ]
+            },
+            "attributes": {
+                "size": {
+                    "type": "long",
+                    "value": 6
+                },
+                "drop_last": {
+                    "type": "boolean",
+                    "value": true
+                }
+            },
+            "op": "one_hot_encoder"
+        },
+        {
+            "name": "vecAssembler_e05ff3b37ebc",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "fico",
+                        "port": "input0"
+                    },
+                    {
+                        "name": "dti",
+                        "port": "input1"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "features",
+                        "port": "output"
+                    }
+                ]
+            },
+            "op": "vector_assembler"
+        },
+        {
+            "name": "glm_b2394c4a0706",
+            "shape": {
+                "inputs": [
+                    {
+                        "name": "features",
+                        "port": "features"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "prediction",
+                        "port": "prediction"
+                    }
+                ]
+            },
+            "attributes": {
+                "coefficients": {
+                    "type": {
+                        "type": "tensor",
+                        "tensor": {
+                            "base": "double"
+                        }
+                    },
+                    "value": {
+                        "values": [
+                            0.641492430082025,
+                            0.4283855555951385,
+                            0.767723293335758,
+                            0.1898169953700981,
+                            0.2372585207625398,
+                            0.25432555753420727,
+                            7.0059062580614325e-06
+                        ],
+                        "dimensions": [
+                            7
+                        ]
+                    }
+                },
+                "intercept": {
+                    "type": "double",
+                    "value": 8.998086529680654
+                },
+                "family": {
+                    "type": "string",
+                    "value": "gaussian"
+                },
+                "link": {
+                    "type": "string",
+                    "value": "log"
+                }
+            },
+            "op": "generalized_linear_regression"
+        }
+    ],
+    "version": "0.5.0-SNAPSHOT",
+    "uid": "2542cbdf-9f98-44cf-b8ff-13a3c92ba51c",
+    "name": "pipeline_2a7cc089f3c5",
+    "op": "pipeline"
+}
